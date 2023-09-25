@@ -179,10 +179,11 @@ final class Runner
     private function processFile(SplFileInfo $file): void
     {
         $cacheKey = 'insights.' . $this->cacheKey . '.' . md5($file->getContents());
-        // Do not use cache if fix is enabled to force processors to handle it
-        if (! $this->cache->has($cacheKey)) {
-            throw new \LogicException('Unable to find data for ' . $file->getPathname());
-        }
+//        // Do not use cache if fix is enabled to force processors to handle it
+        // TODO Remove validation for ISO-8859-1
+//        if (! $this->cache->has($cacheKey)) {
+//            throw new \LogicException('Unable to find data for ' . $file->getPathname());
+//        }
 
         $this->loadDetailsCache($cacheKey);
 
